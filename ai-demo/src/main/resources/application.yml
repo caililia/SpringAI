@@ -1,0 +1,33 @@
+spring:
+  application:
+    name: ai-demo
+  ai:
+    ollama:
+      base-url: http://localhost:11434
+      chat:
+        options:
+          model: qwen2.5:3b
+          temperature: 0.7
+
+    dashscope:
+      api-key: ***
+      chat:
+        options:
+          model: qwen-plus  # 可选: qwen-turbo, qwen-plus, qwen-max
+          temperature: 0.7
+
+server:
+  port: 8080
+
+# Milvus 向量数据库配置
+  ai:
+    vectorstore:
+      milvus:
+        client:
+          host: localhost
+          port: 19530
+        database-name: ai_demo
+        collection-name: knowledge_base
+        embedding-dimension: 768
+        index-type: IVF_FLAT
+        metric-type: COSINE
